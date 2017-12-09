@@ -13,6 +13,9 @@ class Home(Screen):
         status_grid = StatusGrid()
         self.add_widget(status_grid)
 
+class StatusBar(ProgressBar):
+    def __init__(self, **kwargs):
+        super(StatusBar, self).__init__(**kwargs)
 
 class StatusGrid(GridLayout):
     def __init__(self, **kwargs):
@@ -26,8 +29,8 @@ class StatusGrid(GridLayout):
     def add_widgets(self, *args):
         hunger_text = Label(text='HUNGER', font_size=12)
         happy_text = Label(text='HAPPY', font_size=12)
-        hunger_bar = ProgressBar()
-        happy_bar = ProgressBar()
+        hunger_bar = StatusBar(value=30)
+        happy_bar = StatusBar(value=70)
         status_list = [hunger_text, hunger_bar,
                 happy_text, happy_bar]
         [self.add_widget(widget) for widget in status_list]
